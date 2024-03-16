@@ -54,7 +54,9 @@ namespace MotorV2Practice.Controllers
             {
                 _dbContext.Brands.Add(brand);
                 _dbContext.SaveChanges();
-
+ 
+                 TempData["success"] = "Record Created Successfully";
+ 
                 return RedirectToAction(nameof(Index));
             }
             return View();
@@ -123,7 +125,9 @@ namespace MotorV2Practice.Controllers
 
                 _dbContext.Brands.Update(objFromDb);
                 _dbContext.SaveChanges();
-
+                
+                TempData["warning"] = "Record Updated Successfully";
+                
                 return RedirectToAction(nameof(Index));
             }
             return View();
@@ -157,7 +161,8 @@ namespace MotorV2Practice.Controllers
             }
             _dbContext.Brands.Remove(brand);
             _dbContext.SaveChanges();
-
+            
+            TempData["error"] = "Record Deleted Successfully";
             return RedirectToAction(nameof(Index));
         }
     }
